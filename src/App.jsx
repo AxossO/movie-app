@@ -1,17 +1,31 @@
-import { Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./components/AppLayout";
 import Home from "./pages/Home";
-
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 function App() {
+  const router = createBrowserRouter([
+    {
+      element: <AppLayout />,
+
+      children: [
+        {
+          path: "/",
+          element: <Navigate replace to="home" />,
+        },
+        {
+          path: "home",
+          element: <Home />,
+        },
+      ],
+    },
+  ]);
   return (
     <>
       <div className="bg-[#888] min-h-screen">
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="home" />}></Route>
-            <Route path="home" element={<Home />}></Route>
-          </Route>
-        </Routes>
+        <RouterProvider router={router} />;
       </div>
     </>
   );
