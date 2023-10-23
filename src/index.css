@@ -21,3 +21,9 @@ html::-webkit-scrollbar-track {
 #root {
   @apply bg-[#888] min-h-screen;
 }
+.active {
+  display: block;
+}
+.hidden {
+  display: none;
+}
