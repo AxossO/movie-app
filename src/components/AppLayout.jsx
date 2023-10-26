@@ -4,7 +4,7 @@ import Nav from "./Nav";
 const AppLayout = () => {
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <Outlet />
     </>
   );
