@@ -14,8 +14,22 @@ const options = {
     Authorization: accessToken,
   },
 };
+const upcomingOption = {
+  method: "GET",
+  url: `${url}/3/movie/upcoming`,
+  params: { language: "en-US", page: "1" },
+  headers: {
+    accept: "application/json",
+    Authorization: accessToken,
+  },
+};
 
 export const verfiy = createAsyncThunk("verfiy/path", async () => {
   const response = await axios.request(options);
+  return response.data.results.slice(0, 5);
+});
+
+export const upcomingMovie = createAsyncThunk("upcomingMovie", async () => {
+  const response = await axios.request(upcomingOption);
   return response.data.results;
 });

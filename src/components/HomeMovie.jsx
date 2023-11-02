@@ -15,26 +15,35 @@ const HomeMovie = ({ movie }) => {
         >
           <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
           <Nav />
-          <div className="flex flex-row z-40">
+          <div className="flex flex-row items-center space-x-5  z-40 max-w-7xl w-full  mb-20">
             <div className="space-y-10 ">
-              <h1 className="text-8xl text-white max-w-2xl">{movie.original_title}</h1>
-              <p className="max-w-xl text-sm text-white">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque,
-                ducimus quod, voluptate esse nulla autem voluptas tempore eaque
-                ea natus quis, exercitationem facilis possimus? Quis sapiente
-                voluptate voluptatum laborum esse!
+              <h1 className="text-8xl text-white max-w-2xl font-bold">
+                {movie.original_title}
+              </h1>
+
+              <p className="max-w-2xl text-lg text-white font-bold ">
+                {movie.overview}
+                <h4 className="text-white font-bold mt-2">
+                  Release Date :{" "}
+                  <span className="text-red-700">{movie.release_date}</span>
+                </h4>
               </p>
+
               <div className="space-x-4 rounded-md ">
-                <button className="rounded-lg bg-red-700 px-6 py-2 shadow-xl">
+                <button className="rounded-2xl text-2xl bg-red-600 text-white  shadow-[0px_0px_7px_6px_#670b0b]  px-8 py-2 -">
                   Watch Now
                 </button>
-                <button className="rounded-lg border bg-slate-500 px-6 py-2 shadow-xl">
+                <button className="rounded-2xl text-2xl border text-white px-8 py-2 shadow-xl">
                   Watch Trailer
                 </button>
               </div>
             </div>
             <div>
-              <img className="w-80" src={imgSrc + movie.poster_path} alt="" />
+              <img
+                className="w-96 shadow-[0px_0px_7px_6px_#101010]  rounded-2xl"
+                src={imgSrc + movie.poster_path}
+                alt=""
+              />
             </div>
           </div>
         </div>

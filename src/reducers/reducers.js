@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { verfiy } from "../../Api";
+import { upcomingMovie, verfiy } from "../../Api";
 
 const initialState = {
   movie: [],
+  upcomingMovie: [],
   status: "idle",
   error: "no error",
 };
@@ -23,9 +24,12 @@ const movieSlice = createSlice({
       .addCase(verfiy.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(upcomingMovie.fulfilled, (state, action) => {
+        state.upcomingMovie = action.payload;
+        state.status = "fulfilled";
       });
   },
 });
 
 export const movieReducers = movieSlice.reducer;
-
