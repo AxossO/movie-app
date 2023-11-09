@@ -26,7 +26,7 @@ const Home = () => {
         </Swiper>
       </div>
       <div>
-        <h1>Upcoming Movie</h1>
+        <h1 className="text-xl my-4">Upcoming Movie</h1>
 
         <Swiper slidesPerView={6} loop={true} draggable={true}>
           {upcomingMoviee.map((movie) => (
