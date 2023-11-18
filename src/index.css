@@ -27,3 +27,6 @@ html::-webkit-scrollbar-track {
 .hidden {
   display: none;
 }
+.movie-grid .swiper-slide {
+  @apply w-1/6;
+}

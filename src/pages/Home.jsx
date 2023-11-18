@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { upcomingMovie, verfiy } from "../../Api";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
+import { EffectFade, Navigation, Pagination } from "swiper/modules";
+
 import MovieGrid from "../components/MovieGrid";
 
 const Home = () => {
@@ -17,7 +19,15 @@ const Home = () => {
   return (
     <div className="  flex flex-col overflow-hidden relative">
       <div className=" flex-row h-full w-full flex mx-auto  overflow-hidden relative   ">
-        <Swiper loop={true} draggable={true}>
+        <Swiper
+          loop={true}
+          navigation={true}
+          modules={[Navigation, EffectFade, Pagination]}
+          effect={"fade"}
+          pagination={{
+            clickable: true,
+          }}
+        >
           {movie.map((movie) => (
             <SwiperSlide key={movie.id}>
               <HomeMovie movie={movie} key={movie.id} />
@@ -26,15 +36,30 @@ const Home = () => {
         </Swiper>
       </div>
       <div>
-        <h1 className="text-xl my-4">Upcoming Movie</h1>
+        <div className="movie-grid mx-20">
+          <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
+            <h1 className="">Upcoming Movie</h1>
+            <h1 className="text-right">View More</h1>
+          </div>
 
-        <Swiper slidesPerView={6} loop={true} draggable={true}>
-          {upcomingMoviee.map((movie) => (
-            <SwiperSlide key={movie.id}>
-              <MovieGrid movie={movie} key={movie.id} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          <Swiper
+            slidesPerView={"auto"}
+            loop={true}
+            draggable={true}
+            spaceBetween={25}
+            grabCursor={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Pagination]}
+          >
+            {upcomingMoviee.map((movie) => (
+              <SwiperSlide key={movie.id}>
+                <MovieGrid movie={movie} key={movie.id} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </div>
   );
