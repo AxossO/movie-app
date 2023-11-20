@@ -7,11 +7,13 @@ import "swiper/swiper-bundle.css";
 import { EffectFade, Navigation, Pagination } from "swiper/modules";
 
 import MovieGrid from "../components/MovieGrid";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const movie = useSelector((state) => state.movie.movie);
   const upcomingMoviee = useSelector((state) => state.movie.upcomingMovie);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(verfiy());
     dispatch(upcomingMovie());
@@ -39,7 +41,12 @@ const Home = () => {
         <div className="movie-grid mx-20">
           <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
             <h1 className="">Upcoming Movie</h1>
-            <h1 className="text-right">View More</h1>
+            <h1
+              className="text-right cursor-pointer"
+              onClick={() => navigate("/home/upcomingmovies")}
+            >
+              View More
+            </h1>
           </div>
 
           <Swiper

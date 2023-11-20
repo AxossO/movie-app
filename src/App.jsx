@@ -1,4 +1,5 @@
 import AppLayout from "./components/AppLayout";
+import UpComingMovies from "./components/UpComingMovies";
 import Home from "./pages/Home";
 import {
   Navigate,
@@ -18,6 +19,10 @@ function App() {
         {
           path: "home",
           element: <Home />,
+        },
+        {
+          path: "home/upcomingmovies",
+          element: <UpComingMovies />,
         },
       ],
     },
