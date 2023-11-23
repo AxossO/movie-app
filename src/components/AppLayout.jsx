@@ -4,10 +4,9 @@ import Nav from "./Nav";
 const AppLayout = () => {
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex justify-center  items-center relative">
         <Nav />
-      <Outlet />
-
+        <Outlet />
       </div>
     </>
   );

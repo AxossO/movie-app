@@ -10,11 +10,17 @@ const UpComingMovies = () => {
     dispatch(upcomingMovie());
   }, []);
   return (
-    <div className="mt-80 grid grid-cols-5 w-full h-full">
-      <SingleUpcomingMovie />
-      {upcomingMoviee.map((movie) => (
-        <SingleUpcomingMovie movie={movie} key={movie.id} />
-      ))}
+    <div className="h-screen w-full max-w-7xl mt-80 ">
+      <div className="text-center mb-10 text-3xl font-bold font-mono">
+        Upcoming Movies
+      </div>
+
+      <div className=" w-full h-full grid gap-3 grid-cols-minmax-cols grid-rows-minmax-rows min-h-full  ">
+        <SingleUpcomingMovie />
+        {upcomingMoviee.map((movie) => (
+          <SingleUpcomingMovie movie={movie} key={movie.id} />
+        ))}
+      </div>
     </div>
   );
 };
