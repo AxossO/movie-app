@@ -19,7 +19,7 @@ const Home = () => {
     dispatch(upcomingMovie());
   }, []);
   return (
-    <div className="  flex flex-col overflow-hidden relative">
+    <div className="  flex flex-col overflow-hidden relative w-full">
       <div className=" flex-row h-full w-full flex mx-auto  overflow-hidden relative   ">
         <Swiper
           loop={true}
@@ -38,7 +38,7 @@ const Home = () => {
         </Swiper>
       </div>
       <div>
-        <div className="movie-grid mx-20">
+        <div className="movie-grid mx-20 ">
           <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
             <h1 className="">Upcoming Movie</h1>
             <h1

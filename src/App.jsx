@@ -29,8 +29,8 @@ function App() {
   ]);
   return (
     <>
-      <div className="bg-[#888] min-h-screen">
-        <RouterProvider router={router} />;
+      <div className="bg-[#100F10]  relative">
+        <RouterProvider router={router} />
       </div>
     </>
   );

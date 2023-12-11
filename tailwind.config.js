@@ -5,10 +5,10 @@ export default {
     extend: {
       boxShadow: {},
       gridTemplateColumns: {
-        "minmax-cols": "repeat(auto-fit, minmax(250px, 1fr))",
+        "minmax-cols": "repeat(auto-fit, minmax(220px, 1fr))",
       },
       gridTemplateRows: {
-        "minmax-rows": "minmax(380px, 1fr))",
+        "minmax-rows": "",
       },
     },
   },

@@ -19,7 +19,7 @@ html::-webkit-scrollbar-track {
 }
 
 #root {
-  @apply bg-[#888] min-h-screen;
+  @apply bg-[#100F10] min-h-screen;
 }
 .active {
   display: block;
@@ -28,5 +28,5 @@ html::-webkit-scrollbar-track {
   display: none;
 }
 .movie-grid .swiper-slide {
-  @apply w-1/6;
+  @apply w-1/6 ;
 }
