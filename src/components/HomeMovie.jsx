@@ -1,11 +1,17 @@
 import { useSelector } from "react-redux";
 import Nav from "./Nav";
+import { useNavigate } from "react-router-dom";
 
 const HomeMovie = ({ movie }) => {
   const status = useSelector((state) => state.movie.status);
   const imgSrc = "https://image.tmdb.org/t/p/original/";
   // if (status === "fulfilled") console.log("fullfiled");
   // if (status === "loading") console.log("loading");
+  const navigate = useNavigate();
+
+  const handleMovieClick = () => {
+    navigate(`/movie/${movie.id}`);
+  };
   return (
     <>
       {status === "fulfilled" && (
@@ -30,7 +36,10 @@ const HomeMovie = ({ movie }) => {
               </p>
 
               <div className="space-x-4 rounded-md ">
-                <button className="rounded-2xl text-2xl bg-red-600 text-white  shadow-[0px_0px_7px_6px_#670b0b]  px-8 py-2 -">
+                <button
+                  className="rounded-2xl text-2xl bg-red-600 text-white  shadow-[0px_0px_7px_6px_#670b0b]  px-8 py-2 -"
+                  onClick={() => handleMovieClick()}
+                >
                   Watch Now
                 </button>
                 <button className="rounded-2xl text-2xl border text-white px-8 py-2 shadow-xl">

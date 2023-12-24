@@ -1,14 +1,21 @@
 import { useState } from "react";
 import OnHoverMovie from "./OnHoverMovie";
+import { useNavigate } from "react-router-dom";
 
 const MovieGrid = ({ movie }) => {
   const imgSrc = "https://image.tmdb.org/t/p/original/";
   const [ishovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
+
+  const handleMovieClick = () => {
+    navigate(`/movie/${movie.id}`);
+  };
   return (
     <div
-      className="hover:scale-110  duration-300 relative hover:rounded-[2rem] "
+      className="hover:scale-110  duration-300 relative hover:rounded-[2rem] cursor-pointer "
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => handleMovieClick()}
     >
       <div className="">
         <img

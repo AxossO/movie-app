@@ -1,4 +1,5 @@
 import AppLayout from "./components/AppLayout";
+import MoviePage from "./components/MoviePage";
 import UpComingMovies from "./components/UpComingMovies";
 import Home from "./pages/Home";
 import {
@@ -23,6 +24,10 @@ function App() {
         {
           path: "home/upcomingmovies",
           element: <UpComingMovies />,
+        },
+        {
+          path: "movie/:id",
+          element: <MoviePage />,
         },
       ],
     },

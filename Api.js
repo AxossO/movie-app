@@ -3,15 +3,11 @@ import axios from "axios";
 
 const apiKey = import.meta.env.API_KEY;
 const accessToken = import.meta.env.VITE_ACCESS_TOKEN;
-const url = "https://api.themoviedb.org/";
-
-const getPageNumber = (index) => {
-  page: page;
-};
+const url = "https://api.themoviedb.org/3";
 
 const options = {
   method: "GET",
-  url: `${url}/3/movie/now_playing`,
+  url: `${url}/movie/now_playing`,
   params: { language: "en-US", page: "1" },
   headers: {
     accept: "application/json",
@@ -20,12 +16,56 @@ const options = {
 };
 const upcomingOption = (index) => ({
   method: "GET",
-  url: `${url}/3/movie/upcoming?page${index}`,
+  url: `${url}/movie/upcoming?page${index}`,
   params: { language: "en-US", page: index },
   headers: {
     accept: "application/json",
     Authorization: accessToken,
   },
+});
+const gettingId = (id) => ({
+  method: "GET",
+  url: `${url}/movie/${id}`,
+  headers: {
+    accept: "application/json",
+    Authorization: accessToken,
+  },
+});
+const gettingCast = (id) => ({
+  method: "GET",
+  url: `${url}/movie/${id}/credits`,
+  headers: {
+    accept: "application/json",
+    Authorization: accessToken,
+  },
+});
+const gettingVideos = (id) => ({
+  method: "GET",
+  url: `${url}/movie/${id}/videos`,
+  headers: {
+    accept: "application/json",
+    Authorization: accessToken,
+  },
+});
+const gettingImages = (id) => ({
+  method: "GET",
+  url: `${url}/movie/${id}/images`,
+  headers: {
+    accept: "application/json",
+    Authorization: accessToken,
+  },
+});
+export const image = createAsyncThunk("image", async (id) => {
+  const response = await axios.request(gettingImages(id));
+  return response.data;
+});
+export const video = createAsyncThunk("video", async (id) => {
+  const response = await axios.request(gettingVideos(id));
+  return response.data.results;
+});
+export const cast = createAsyncThunk("cast", async (id) => {
+  const response = await axios.request(gettingCast(id));
+  return response.data.cast.slice(0, 5);
 });
 
 export const verfiy = createAsyncThunk("verfiy/path", async () => {
@@ -40,3 +80,8 @@ export const upcomingMovie = createAsyncThunk(
     return response.data.results;
   }
 );
+
+export const movieId = createAsyncThunk("movieId", async (id) => {
+  const response = await axios.request(gettingId(id));
+  return response.data;
+});

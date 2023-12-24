@@ -28,5 +28,34 @@ html::-webkit-scrollbar-track {
   display: none;
 }
 .movie-grid .swiper-slide {
-  @apply w-1/6 ;
+  @apply w-1/6;
+}
+.movie-grid .swiper-pagination {
+  @apply hidden;
+}
+.swiper-pagination .swiper-pagination-bullet-active {
+  @apply bg-white text-white;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  @apply text-white;
+}
+.video iframe {
+  @apply w-full h-full;
+}
+.divider .swiper-slide {
+  @apply w-full opacity-60 pb-12;
+}
+.divider .swiper-slide-active {
+  @apply opacity-100;
+}
+.divider .swiper-button-prev::after,
+.divider .swiper-button-next::after {
+  @apply text-3xl;
+}
+.red-line {
+  @apply before:h-1 before:w-20 before:absolute before:bg-[#E10907] before:-bottom-2 relative uppercase text-white font-bold;
+}
+.main-section-container {
+  @apply flex w-full  max-w-7xl mx-auto  flex-col relative;
 }
