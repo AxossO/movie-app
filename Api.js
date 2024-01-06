@@ -92,6 +92,18 @@ const gettingImages = (id, endpoint) => ({
     Authorization: accessToken,
   },
 });
+const experminet = () => ({
+  method: "GET",
+  url: `${url}/movie/latest`,
+  headers: {
+    accept: "application/json",
+    Authorization: accessToken,
+  },
+});
+export const testing = createAsyncThunk("poitato/path", async () => {
+  const response = await axios.request(experminet());
+  return response.data;
+});
 export const image = createAsyncThunk("image", async ({ id, endpoint }) => {
   const response = await axios.request(gettingImages(id, endpoint));
   return response.data;

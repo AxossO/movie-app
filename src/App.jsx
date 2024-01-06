@@ -8,7 +8,13 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
-const categories = ["upcoming-movies", "popular-movies", "popular-series"];
+const categories = [
+  "upcoming-movies",
+  "popular-movies",
+  "popular-series",
+  "top-rated-series",
+  "top-rated-movies",
+];
 function App() {
   const router = createBrowserRouter([
     {

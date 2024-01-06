@@ -15,6 +15,7 @@ import { EffectFade, Navigation, Pagination } from "swiper/modules";
 
 import MovieGrid from "../components/MovieGrid";
 import { useNavigate } from "react-router-dom";
+import ScrollTop from "../components/ScrollTop";
 
 const Home = () => {
   const movie = useSelector((state) => state.movie.movie);
@@ -35,6 +36,7 @@ const Home = () => {
   }, []);
   return (
     <div className="  flex flex-col overflow-hidden relative w-full">
+      <ScrollTop />
       <div className=" flex-row h-full w-full flex mx-auto  overflow-hidden relative   ">
         <Swiper
           loop={true}

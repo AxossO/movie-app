@@ -30,7 +30,11 @@ html::-webkit-scrollbar-track {
 .movie-grid .swiper-slide {
   @apply w-1/6;
 }
-.movie-grid .swiper-pagination {
+.movie-edit .swiper-slide {
+  @apply w-1/5;
+}
+.movie-grid .swiper-pagination,
+.movie-edit .swiper-pagination {
   @apply hidden;
 }
 .swiper-pagination .swiper-pagination-bullet-active {

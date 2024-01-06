@@ -1,16 +1,29 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { cast, image, movieId, video } from "../../Api";
+import {
+  cast,
+  image,
+  movieId,
+  testing,
+  topRatedMovies,
+  topRatedSeries,
+  video,
+} from "../../Api";
 import { useLocation, useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/swiper-bundle.css";
+import ScrollTop from "./ScrollTop";
+import MovieGrid from "./MovieGrid";
 const MoviePage = () => {
   const movie = useSelector((state) => state.movie.movieDetails.listOfId);
   const movieCast = useSelector((state) => state.movie.movieDetails.casts);
   const videos = useSelector((state) => state.movie.movieDetails.videos);
   const movieImage = useSelector((state) => state.movie.movieDetails.images);
+  const topSeries = useSelector((state) => state.movie.topRated.topRatedSeries);
+  const topMovies = useSelector((state) => state.movie.topRated.topRatedMovies);
+  const random = useSelector((state) => state.movie.randomMovie);
   const imgSrc = "https://image.tmdb.org/t/p/original/";
   const dispatch = useDispatch();
   const location = useLocation();
@@ -21,12 +34,16 @@ const MoviePage = () => {
     dispatch(cast({ id, endpoint }));
     dispatch(video({ id, endpoint }));
     dispatch(image({ id, endpoint }));
+    dispatch(topRatedMovies());
+    dispatch(testing());
   }, [dispatch, id]);
 
   return (
     <>
       {movie && (
         <div className="w-full">
+          <ScrollTop />
+
           <div
             className={` w-full h-screen bg-cover bg-no-repeat flex flex-col items-center justify-center relative`}
             style={{ backgroundImage: `url(${imgSrc + movie.backdrop_path})` }}
@@ -123,7 +140,8 @@ const MoviePage = () => {
                         <SwiperSlide>
                           <YouTube
                             className="w-full flex justify-center items-center  video h-full  "
-                            key={video.key}
+                            videoId={video.key}
+                            key={video.id}
                           ></YouTube>
                         </SwiperSlide>
                       )}
@@ -163,7 +181,7 @@ const MoviePage = () => {
               </Swiper>
             )}
           </div>
-          <div className=" main-section-container  movie-grid ">
+          <div className=" main-section-container  movie-edit ">
             <div className=" red-line w-full mb-8 ">Posters</div>
             {movieImage.posters && (
               <Swiper
@@ -192,8 +210,29 @@ const MoviePage = () => {
               </Swiper>
             )}
           </div>
-          <div className="main-section-container  movie-grid">
+          <div className="main-section-container  movie-edit">
             <div className=" red-line w-full mt-8 ">You May Also like</div>
+            {random && (
+              <Swiper
+                slidesPerView={"auto"}
+                loop={true}
+                draggable={true}
+                spaceBetween={25}
+                grabCursor={true}
+                pagination={{
+                  clickable: true,
+                }}
+                modules={[Pagination]}
+              >
+                <div className="flex justify-center items-center w-full h-full ">
+                  {random.map((movie) => (
+                    <SwiperSlide className="mt-8">
+                      <MovieGrid movie={movie} key={movie.id} />
+                    </SwiperSlide>
+                  ))}
+                </div>
+              </Swiper>
+            )}
           </div>
         </div>
       )}
