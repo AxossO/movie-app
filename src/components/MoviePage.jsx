@@ -1,26 +1,26 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cast, image, movieId, video } from "../../Api";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 const MoviePage = () => {
-  const movie = useSelector((state) => state.movie.listOfId);
-  const movieCast = useSelector((state) => state.movie.casts);
-  const videos = useSelector((state) => state.movie.videos);
-  const movieImage = useSelector((state) => state.movie.images);
-  const singleMovie = useSelector((state) => state.movie.movie);
-
+  const movie = useSelector((state) => state.movie.movieDetails.listOfId);
+  const movieCast = useSelector((state) => state.movie.movieDetails.casts);
+  const videos = useSelector((state) => state.movie.movieDetails.videos);
+  const movieImage = useSelector((state) => state.movie.movieDetails.images);
   const imgSrc = "https://image.tmdb.org/t/p/original/";
   const dispatch = useDispatch();
+  const location = useLocation();
   const { id } = useParams();
   useEffect(() => {
-    dispatch(movieId(id));
-    dispatch(cast(id));
-    dispatch(video(id));
-    dispatch(image(id));
+    const endpoint = location.pathname.includes("/tv/") ? "tv" : "movie";
+    dispatch(movieId({ id, endpoint }));
+    dispatch(cast({ id, endpoint }));
+    dispatch(video({ id, endpoint }));
+    dispatch(image({ id, endpoint }));
   }, [dispatch, id]);
 
   return (
@@ -123,7 +123,7 @@ const MoviePage = () => {
                         <SwiperSlide>
                           <YouTube
                             className="w-full flex justify-center items-center  video h-full  "
-                            videoId={video.key}
+                            key={video.key}
                           ></YouTube>
                         </SwiperSlide>
                       )}
@@ -150,7 +150,7 @@ const MoviePage = () => {
               >
                 <div className="flex justify-center items-center w-full  ">
                   {movieImage.backdrops.map((imagee) => (
-                    <div>
+                    <div key={imagee.id}>
                       <SwiperSlide>
                         <img
                           className="w-full flex justify-center items-center h-full  "
@@ -179,7 +179,7 @@ const MoviePage = () => {
               >
                 <div className="flex justify-center items-center w-full h-full  ">
                   {movieImage.posters.map((poster) => (
-                    <div>
+                    <div key={poster.id}>
                       <SwiperSlide>
                         <img
                           className="h-full w-full"

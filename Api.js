@@ -23,6 +23,33 @@ const upcomingOption = (index) => ({
     Authorization: accessToken,
   },
 });
+const seriesOption = (index) => ({
+  method: "GET",
+  url: `${url}/tv/popular?page${index}`,
+  params: { page: index },
+  headers: {
+    accept: "application/json",
+    Authorization: accessToken,
+  },
+});
+const topRatedSeriesOption = (index) => ({
+  method: "GET",
+  url: `${url}/tv/top_rated?page${index}`,
+  params: { page: index },
+  headers: {
+    accept: "application/json",
+    Authorization: accessToken,
+  },
+});
+const topRatedMovieOption = (index) => ({
+  method: "GET",
+  url: `${url}/movie/top_rated?page${index}`,
+  params: { page: index },
+  headers: {
+    accept: "application/json",
+    Authorization: accessToken,
+  },
+});
 const popular = (index) => ({
   method: "GET",
   url: `${url}/movie/popular?page${index}`,
@@ -32,48 +59,49 @@ const popular = (index) => ({
     Authorization: accessToken,
   },
 });
-const gettingId = (id) => ({
+const gettingId = (id, endpoint) => ({
   method: "GET",
-  url: `${url}/movie/${id}`,
+  url: `${url}/${endpoint}/${id}`,
   headers: {
     accept: "application/json",
     Authorization: accessToken,
   },
 });
-const gettingCast = (id) => ({
+const gettingCast = (id, endpoint) => ({
   method: "GET",
-  url: `${url}/movie/${id}/credits`,
+  url: `${url}/${endpoint}/${id}/credits`,
   headers: {
     accept: "application/json",
     Authorization: accessToken,
   },
 });
-const gettingVideos = (id) => ({
+const gettingVideos = (id, endpoint) => ({
   method: "GET",
-  url: `${url}/movie/${id}/videos`,
+  url: `${url}/${endpoint}/${id}/videos`,
+  // url: `${url}/${endpoint}/${id}/videos`,
   headers: {
     accept: "application/json",
     Authorization: accessToken,
   },
 });
-const gettingImages = (id) => ({
+const gettingImages = (id, endpoint) => ({
   method: "GET",
-  url: `${url}/movie/${id}/images`,
+  url: `${url}/${endpoint}/${id}/images`,
   headers: {
     accept: "application/json",
     Authorization: accessToken,
   },
 });
-export const image = createAsyncThunk("image", async (id) => {
-  const response = await axios.request(gettingImages(id));
+export const image = createAsyncThunk("image", async ({ id, endpoint }) => {
+  const response = await axios.request(gettingImages(id, endpoint));
   return response.data;
 });
-export const video = createAsyncThunk("video", async (id) => {
-  const response = await axios.request(gettingVideos(id));
+export const video = createAsyncThunk("video", async ({ id, endpoint }) => {
+  const response = await axios.request(gettingVideos(id, endpoint));
   return response.data.results;
 });
-export const cast = createAsyncThunk("cast", async (id) => {
-  const response = await axios.request(gettingCast(id));
+export const cast = createAsyncThunk("cast", async ({ id, endpoint }) => {
+  const response = await axios.request(gettingCast(id, endpoint));
   return response.data.cast.slice(0, 5);
 });
 
@@ -89,12 +117,33 @@ export const upcomingMovie = createAsyncThunk(
     return response.data.results;
   }
 );
+export const popularSeries = createAsyncThunk(
+  "popularSeries",
+  async (index) => {
+    const response = await axios.request(seriesOption(index));
+    return response.data.results;
+  }
+);
 export const popularMovies = createAsyncThunk("popular", async (index) => {
   const response = await axios.request(popular(index));
   return response.data.results;
 });
+export const topRatedSeries = createAsyncThunk(
+  "topRatedSeries",
+  async (index) => {
+    const response = await axios.request(topRatedSeriesOption(index));
+    return response.data.results;
+  }
+);
+export const topRatedMovies = createAsyncThunk(
+  "topRatedMovies",
+  async (index) => {
+    const response = await axios.request(topRatedMovieOption(index));
+    return response.data.results;
+  }
+);
 
-export const movieId = createAsyncThunk("movieId", async (id) => {
-  const response = await axios.request(gettingId(id));
+export const movieId = createAsyncThunk("movieId", async ({ id, endpoint }) => {
+  const response = await axios.request(gettingId(id, endpoint));
   return response.data;
 });

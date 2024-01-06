@@ -1,19 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import SingleUpcomingMovie from "./SingleUpcomingMovie";
 import { useEffect, useState } from "react";
-import { popularMovies, upcomingMovie } from "../../Api";
+import { popularMovies, popularSeries, upcomingMovie } from "../../Api";
 import { Link, useLocation } from "react-router-dom";
 
 const UpComingMovies = ({ category }) => {
   const upcomingMoviee = useSelector((state) => state.movie.upcomingMovie);
-  const popularMoviee = useSelector((state) => state.movie.popular);
+  const popularMoviee = useSelector((state) => state.movie.pop.popular);
+  const series = useSelector((state) => state.movie.pop.series);
   const dispatch = useDispatch();
   const location = useLocation();
   const urlParams = new URLSearchParams(location.search);
   const pageParam = parseInt(urlParams.get("page") || "1");
   const urlName = category.replace("-", " ");
   const [currentIdx, setCurrentIdx] = useState(pageParam);
-  console.log(category);
+  // console.log(category);
   useEffect(() => {
     const newPageParam = pageParam;
     setCurrentIdx(newPageParam);
@@ -23,6 +24,8 @@ const UpComingMovies = ({ category }) => {
       dispatch(upcomingMovie(currentIdx));
     } else if (currentIdx > 0 && category === "popular-movies") {
       dispatch(popularMovies(currentIdx));
+    } else if (currentIdx > 0 && category === "popular-series") {
+      dispatch(popularSeries(currentIdx));
     }
   }, [currentIdx, dispatch]);
   const idxhandler = (idx) => {
@@ -43,6 +46,13 @@ const UpComingMovies = ({ category }) => {
       {category === "popular-movies" && (
         <div className="w-full h-full grid gap-3 grid-cols-minmax-cols grid-rows-minmax-rows min-h-[180vh]">
           {popularMoviee.map((movie) => (
+            <SingleUpcomingMovie movie={movie} key={movie.id} id={movie.id} />
+          ))}
+        </div>
+      )}
+      {category === "popular-series" && (
+        <div className="w-full h-full grid gap-3 grid-cols-minmax-cols grid-rows-minmax-rows min-h-[180vh]">
+          {series.map((movie) => (
             <SingleUpcomingMovie movie={movie} key={movie.id} id={movie.id} />
           ))}
         </div>

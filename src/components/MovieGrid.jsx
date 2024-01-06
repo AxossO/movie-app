@@ -8,7 +8,8 @@ const MovieGrid = ({ movie }) => {
   const navigate = useNavigate();
 
   const handleMovieClick = () => {
-    navigate(`/movie/${movie.id}`);
+    if (movie.original_title) navigate(`/movie/${movie.id}`);
+    if (movie.original_name) navigate(`/tv/${movie.id}`);
   };
   return (
     <div
