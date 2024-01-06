@@ -1,15 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { cast, image, movieId, upcomingMovie, verfiy, video } from "../../Api";
+import {
+  cast,
+  image,
+  movieId,
+  popularMovies,
+  upcomingMovie,
+  verfiy,
+  video,
+} from "../../Api";
 
 const initialState = {
   movie: [],
   upcomingMovie: [],
-  status: "idle",
-  error: "no error",
+  popular: [],
   listOfId: [],
   casts: [],
   videos: [],
   images: [],
+  status: "idle",
+  error: "no error",
 };
 
 const movieSlice = createSlice({
@@ -48,6 +57,10 @@ const movieSlice = createSlice({
       })
       .addCase(image.fulfilled, (state, action) => {
         state.images = action.payload;
+        state.status = "fulfilled";
+      })
+      .addCase(popularMovies.fulfilled, (state, action) => {
+        state.popular = action.payload;
         state.status = "fulfilled";
       });
   },

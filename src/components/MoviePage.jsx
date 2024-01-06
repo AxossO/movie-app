@@ -11,6 +11,7 @@ const MoviePage = () => {
   const movieCast = useSelector((state) => state.movie.casts);
   const videos = useSelector((state) => state.movie.videos);
   const movieImage = useSelector((state) => state.movie.images);
+  const singleMovie = useSelector((state) => state.movie.movie);
 
   const imgSrc = "https://image.tmdb.org/t/p/original/";
   const dispatch = useDispatch();
@@ -162,7 +163,7 @@ const MoviePage = () => {
               </Swiper>
             )}
           </div>
-          <div className=" main-section-container  movie-grid height-image">
+          <div className=" main-section-container  movie-grid ">
             <div className=" red-line w-full mb-8 ">Posters</div>
             {movieImage.posters && (
               <Swiper
@@ -190,6 +191,9 @@ const MoviePage = () => {
                 </div>
               </Swiper>
             )}
+          </div>
+          <div className="main-section-container  movie-grid">
+            <div className=" red-line w-full mt-8 ">You May Also like</div>
           </div>
         </div>
       )}

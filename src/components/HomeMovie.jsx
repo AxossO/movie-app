@@ -23,9 +23,9 @@ const HomeMovie = ({ movie }) => {
           <Nav />
           <div className="flex flex-row items-center space-x-5  z-40 max-w-7xl w-full  mb-20">
             <div className="space-y-10 ">
-              <h1 className="text-8xl text-white max-w-2xl font-bold">
+              <h2 className="text-8xl text-white max-w-2xl font-bold">
                 {movie.original_title}
-              </h1>
+              </h2>
 
               <p className="max-w-2xl text-lg text-white font-bold ">
                 {movie.overview}

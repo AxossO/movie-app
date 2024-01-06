@@ -1,4 +1,5 @@
 import AppLayout from "./components/AppLayout";
+import Error from "./components/Error";
 import MoviePage from "./components/MoviePage";
 import UpComingMovies from "./components/UpComingMovies";
 import Home from "./pages/Home";
@@ -7,6 +8,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
+const categories = ["upcoming-movies", "popular-movies"];
 function App() {
   const router = createBrowserRouter([
     {
@@ -21,13 +23,18 @@ function App() {
           path: "home",
           element: <Home />,
         },
-        {
-          path: "home/upcomingmovies",
-          element: <UpComingMovies />,
-        },
+        ...categories.map((category) => ({
+          path: `home/${category}`,
+          element: <UpComingMovies category={category} />,
+        })),
+
         {
           path: "movie/:id",
           element: <MoviePage />,
+        },
+        {
+          path: "*",
+          element: <Error />,
         },
       ],
     },

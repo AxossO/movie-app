@@ -17,7 +17,16 @@ const options = {
 const upcomingOption = (index) => ({
   method: "GET",
   url: `${url}/movie/upcoming?page${index}`,
-  params: { language: "en-US", page: index },
+  params: { page: index },
+  headers: {
+    accept: "application/json",
+    Authorization: accessToken,
+  },
+});
+const popular = (index) => ({
+  method: "GET",
+  url: `${url}/movie/popular?page${index}`,
+  params: { page: index },
   headers: {
     accept: "application/json",
     Authorization: accessToken,
@@ -80,6 +89,10 @@ export const upcomingMovie = createAsyncThunk(
     return response.data.results;
   }
 );
+export const popularMovies = createAsyncThunk("popular", async (index) => {
+  const response = await axios.request(popular(index));
+  return response.data.results;
+});
 
 export const movieId = createAsyncThunk("movieId", async (id) => {
   const response = await axios.request(gettingId(id));
