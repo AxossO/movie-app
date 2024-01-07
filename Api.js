@@ -5,6 +5,10 @@ const apiKey = import.meta.env.API_KEY;
 const accessToken = import.meta.env.VITE_ACCESS_TOKEN;
 const url = "https://api.themoviedb.org/3";
 
+const min = 1;
+const max = 1000;
+const randomNumber = Math.floor(Math.random() * (max - min) + min);
+
 const options = {
   method: "GET",
   url: `${url}/movie/now_playing`,
@@ -92,17 +96,17 @@ const gettingImages = (id, endpoint) => ({
     Authorization: accessToken,
   },
 });
-const experminet = () => ({
+const recomenditon = () => ({
   method: "GET",
-  url: `${url}/movie/latest`,
+  url: `${url}/discover/movie?page=${randomNumber}`,
   headers: {
     accept: "application/json",
     Authorization: accessToken,
   },
 });
-export const testing = createAsyncThunk("poitato/path", async () => {
-  const response = await axios.request(experminet());
-  return response.data;
+export const randomMovie = createAsyncThunk("poitato/path", async () => {
+  const response = await axios.request(recomenditon());
+  return response.data.results;
 });
 export const image = createAsyncThunk("image", async ({ id, endpoint }) => {
   const response = await axios.request(gettingImages(id, endpoint));

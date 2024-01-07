@@ -8,6 +8,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
+
 const categories = [
   "upcoming-movies",
   "popular-movies",
@@ -15,11 +16,11 @@ const categories = [
   "top-rated-series",
   "top-rated-movies",
 ];
+
 function App() {
   const router = createBrowserRouter([
     {
       element: <AppLayout />,
-
       children: [
         {
           path: "/",

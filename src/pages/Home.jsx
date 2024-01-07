@@ -26,6 +26,7 @@ const Home = () => {
   const topMovies = useSelector((state) => state.movie.topRated.topRatedMovies);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(verfiy());
     dispatch(upcomingMovie());

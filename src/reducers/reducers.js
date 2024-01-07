@@ -5,7 +5,7 @@ import {
   movieId,
   popularMovies,
   popularSeries,
-  testing,
+  randomMovie,
   topRatedMovies,
   topRatedSeries,
   upcomingMovie,
@@ -14,7 +14,7 @@ import {
 } from "../../Api";
 
 const initialState = {
-  randomMovie: [],
+  randomMovies: [],
   movie: [],
   upcomingMovie: [],
   pop: {
@@ -41,8 +41,8 @@ const movieSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(testing.fulfilled, (state, action) => {
-        state.randomMovie = action.payload;
+      .addCase(randomMovie.fulfilled, (state, action) => {
+        state.randomMovies = action.payload;
         state.status = "fulfilled";
       })
       .addCase(verfiy.fulfilled, (state, action) => {

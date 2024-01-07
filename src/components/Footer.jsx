@@ -12,8 +12,12 @@ const Footer = () => {
             <NavLink to={"/home"}>
               <li>Home</li>
             </NavLink>{" "}
-            <li>Movies</li>
-            <li>Tv Series</li>
+            <NavLink to={"home/popular-movies"}>
+              <li>Movies</li>
+            </NavLink>
+            <NavLink to={"home/popular-series"}>
+              <li>Tv Series</li>
+            </NavLink>
           </ul>
         </div>
       </div>

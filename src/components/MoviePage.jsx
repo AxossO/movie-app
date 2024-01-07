@@ -1,14 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  cast,
-  image,
-  movieId,
-  testing,
-  topRatedMovies,
-  topRatedSeries,
-  video,
-} from "../../Api";
+import { cast, image, movieId, randomMovie, video } from "../../Api";
 import { useLocation, useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -21,9 +13,7 @@ const MoviePage = () => {
   const movieCast = useSelector((state) => state.movie.movieDetails.casts);
   const videos = useSelector((state) => state.movie.movieDetails.videos);
   const movieImage = useSelector((state) => state.movie.movieDetails.images);
-  const topSeries = useSelector((state) => state.movie.topRated.topRatedSeries);
-  const topMovies = useSelector((state) => state.movie.topRated.topRatedMovies);
-  const random = useSelector((state) => state.movie.randomMovie);
+  const random = useSelector((state) => state.movie.randomMovies);
   const imgSrc = "https://image.tmdb.org/t/p/original/";
   const dispatch = useDispatch();
   const location = useLocation();
@@ -34,10 +24,8 @@ const MoviePage = () => {
     dispatch(cast({ id, endpoint }));
     dispatch(video({ id, endpoint }));
     dispatch(image({ id, endpoint }));
-    dispatch(topRatedMovies());
-    dispatch(testing());
+    dispatch(randomMovie());
   }, [dispatch, id]);
-
   return (
     <>
       {movie && (

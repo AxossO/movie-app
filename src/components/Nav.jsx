@@ -9,11 +9,15 @@ const Nav = () => {
         </NavLink>
         <div className="">
           <ul className="flex justify-center items-center space-x-6 z-50 text-white font-bold   text-2xl">
-            <NavLink to={"/home"} >
+            <NavLink to={"/home"}>
               <li>Home</li>
             </NavLink>
-            <li>Movies</li>
-            <li>Tv Series</li>
+            <NavLink to={"home/popular-movies"}>
+              <li>Movies</li>
+            </NavLink>
+            <NavLink to={"home/popular-series"}>
+              <li>Tv Series</li>
+            </NavLink>
           </ul>
         </div>
       </nav>
