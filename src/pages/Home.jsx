@@ -26,7 +26,6 @@ const Home = () => {
   const topMovies = useSelector((state) => state.movie.topRated.topRatedMovies);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   useEffect(() => {
     dispatch(verfiy());
     dispatch(upcomingMovie());
@@ -38,6 +37,7 @@ const Home = () => {
   return (
     <div className="  flex flex-col overflow-hidden relative w-full">
       <ScrollTop />
+
       <div className=" flex-row h-full w-full flex mx-auto  overflow-hidden relative   ">
         <Swiper
           loop={true}
@@ -49,7 +49,7 @@ const Home = () => {
           }}
         >
           {movie.map((movie) => (
-            <SwiperSlide key={movie.id}>
+            <SwiperSlide key={movie.id} className="relative">
               <HomeMovie movie={movie} key={movie.id} />
             </SwiperSlide>
           ))}

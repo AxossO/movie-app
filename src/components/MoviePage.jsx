@@ -25,7 +25,7 @@ const MoviePage = () => {
     dispatch(video({ id, endpoint }));
     dispatch(image({ id, endpoint }));
     dispatch(randomMovie());
-  }, [dispatch, id]);
+  }, [dispatch, id, location.pathname]);
   return (
     <>
       {movie && (
