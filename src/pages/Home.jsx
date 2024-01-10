@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 import MovieGrid from "../components/MovieGrid";
 import { useNavigate } from "react-router-dom";
 import ScrollTop from "../components/ScrollTop";
-import { pageAnimation } from "../animation";
+import { breakPoint, pageAnimation } from "../animation";
 
 const Home = () => {
   const movie = useSelector((state) => state.movie.movie);
@@ -43,7 +43,6 @@ const Home = () => {
       exit="exit"
       className="flex flex-col overflow-hidden relative w-full"
     >
-      <ScrollTop />
       <div className=" flex-row h-full w-full flex mx-auto  overflow-hidden relative   ">
         <Swiper
           loop={true}
@@ -62,7 +61,7 @@ const Home = () => {
         </Swiper>
       </div>
       <div>
-        <div className="movie-grid mx-20 ">
+        <div className="movie-grid mx-20 large:mx-10 ">
           <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
             <h1 className="">Upcoming Movie</h1>
             <h2
@@ -79,6 +78,7 @@ const Home = () => {
             draggable={true}
             spaceBetween={25}
             grabCursor={true}
+            breakpoints={breakPoint}
             pagination={{
               clickable: true,
             }}
@@ -93,7 +93,7 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <div className="movie-grid mx-20 ">
+        <div className="movie-grid mx-20 large:mx-10">
           <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
             <h1 className="">Popular Movie</h1>
             <h2
@@ -110,6 +110,7 @@ const Home = () => {
             draggable={true}
             spaceBetween={25}
             grabCursor={true}
+            breakpoints={breakPoint}
             pagination={{
               clickable: true,
             }}
@@ -124,7 +125,7 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <div className="movie-grid mx-20 ">
+        <div className="movie-grid mx-20 large:mx-10">
           <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
             <h1 className="">Popular Series</h1>
             <h2
@@ -141,6 +142,7 @@ const Home = () => {
             draggable={true}
             spaceBetween={25}
             grabCursor={true}
+            breakpoints={breakPoint}
             pagination={{
               clickable: true,
             }}
@@ -155,7 +157,7 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <div className="movie-grid mx-20 ">
+        <div className="movie-grid mx-20 large:mx-10">
           <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
             <h1 className="">Top Rated Movies</h1>
             <h2
@@ -172,6 +174,7 @@ const Home = () => {
             draggable={true}
             spaceBetween={25}
             grabCursor={true}
+            breakpoints={breakPoint}
             pagination={{
               clickable: true,
             }}
@@ -186,7 +189,7 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <div className="movie-grid mx-20 ">
+        <div className="movie-grid mx-20 large:mx-10 ">
           <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
             <h1 className="">Top Rated Series</h1>
             <h2
@@ -202,6 +205,7 @@ const Home = () => {
             loop={true}
             draggable={true}
             spaceBetween={25}
+            breakpoints={breakPoint}
             grabCursor={true}
             pagination={{
               clickable: true,
@@ -216,6 +220,7 @@ const Home = () => {
           </Swiper>
         </div>
       </div>
+      <ScrollTop />
     </motion.div>
   );
 };

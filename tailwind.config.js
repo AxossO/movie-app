@@ -5,7 +5,9 @@ export default {
     screens: {
       large: { max: "1408px" },
       medium: { max: "1121px" },
+      average: { min: "1122px" },
       small: { max: "710px" },
+      superSmall: { max: "418px" },
     },
     extend: {
       boxShadow: {},

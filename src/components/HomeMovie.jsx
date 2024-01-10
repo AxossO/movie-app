@@ -22,7 +22,7 @@ const HomeMovie = ({ movie }) => {
         >
           <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
           <Nav />
-          <div className="flex flex-row items-center space-x-5  z-40 max-w-7xl w-full  mb-20 mx-auto  medium:flex-col-reverse  ">
+          <div className="flex flex-row items-center space-x-5  z-40 max-w-7xl w-full  mb-20 mx-auto  medium:flex-col-reverse average:mx-auto justify-center mt-8 superSmall:mt-20">
             <motion.div className="space-y-10 medium:space-y-5 medium:px-8 medium:mx-auto ">
               <motion.h2
                 variants={titleAnime}
@@ -45,13 +45,18 @@ const HomeMovie = ({ movie }) => {
                   className="text-white font-bold mt-2 medium:text-center"
                 >
                   Release Date :{" "}
-                  <motion.span variants={fade} className="text-red-700">
+                  <motion.span
+                    variants={fade}
+                    initial="hidden"
+                    animate="show"
+                    className="text-red-700"
+                  >
                     {movie.release_date}
                   </motion.span>
                 </motion.h4>
               </motion.p>
 
-              <div className="space-x-4 rounded-md medium:text-center ">
+              <div className="space-x-4 rounded-md medium:text-center superSmall:flex">
                 <motion.button
                   variants={fade}
                   initial="hidden"

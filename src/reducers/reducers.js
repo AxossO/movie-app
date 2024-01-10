@@ -73,7 +73,6 @@ const movieSlice = createSlice({
       .addCase(cast.fulfilled, (state, action) => {
         state.movieDetails.casts = action.payload;
         state.status = "fulfilled";
-        state.error = action.error.message;
         state.isLoading = false;
       })
       .addCase(video.fulfilled, (state, action) => {
