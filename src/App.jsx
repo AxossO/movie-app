@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion";
 import AppLayout from "./components/AppLayout";
 import Error from "./components/Error";
 import MoviePage from "./components/MoviePage";
@@ -53,7 +54,9 @@ function App() {
   return (
     <>
       <div className="bg-[#100F10]  relative">
-        <RouterProvider router={router} />
+        <AnimatePresence mode="wait">
+          <RouterProvider router={router} />
+        </AnimatePresence>
       </div>
     </>
   );

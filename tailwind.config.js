@@ -2,6 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      large: { max: "1408px" },
+      medium: { max: "1121px" },
+      small: { max: "710px" },
+    },
     extend: {
       boxShadow: {},
       gridTemplateColumns: {

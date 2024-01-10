@@ -3,7 +3,7 @@ import logo from "../../data/logoa.png";
 const Nav = () => {
   return (
     <>
-      <nav className=" max-w-7xl z-20  w-full mx-auto flex justify-between items-center pt-8 absolute top-0 ">
+      <nav className=" max-w-7xl z-20  w-full mx-auto flex justify-between items-center pt-8 absolute top-0 large:max-w-6xl large:px-4">
         <NavLink to={"/home"}>
           <img src={logo} alt="" className="w-20 z-50 "></img>
         </NavLink>

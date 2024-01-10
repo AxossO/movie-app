@@ -12,10 +12,11 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { EffectFade, Navigation, Pagination } from "swiper/modules";
-
+import { motion } from "framer-motion";
 import MovieGrid from "../components/MovieGrid";
 import { useNavigate } from "react-router-dom";
 import ScrollTop from "../components/ScrollTop";
+import { pageAnimation } from "../animation";
 
 const Home = () => {
   const movie = useSelector((state) => state.movie.movie);
@@ -35,9 +36,14 @@ const Home = () => {
     dispatch(topRatedSeries());
   }, []);
   return (
-    <div className="  flex flex-col overflow-hidden relative w-full">
+    <motion.div
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      className="flex flex-col overflow-hidden relative w-full"
+    >
       <ScrollTop />
-
       <div className=" flex-row h-full w-full flex mx-auto  overflow-hidden relative   ">
         <Swiper
           loop={true}
@@ -210,7 +216,7 @@ const Home = () => {
           </Swiper>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

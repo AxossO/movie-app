@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
-
+import { motion } from "framer-motion";
+import { fade, titleAnime } from "../animation";
 const HomeMovie = ({ movie }) => {
   const status = useSelector((state) => state.movie.status);
   const imgSrc = "https://image.tmdb.org/t/p/original/";
@@ -15,47 +16,70 @@ const HomeMovie = ({ movie }) => {
   return (
     <>
       {status === "fulfilled" && (
-        <div
-          className={`w-full h-screen bg-cover bg-no-repeat flex flex-col items-center justify-center relative  `}
+        <motion.div
+          className={`w-full h-screen bg-cover bg-no-repeat flex flex-col items-center justify-center relative   `}
           style={{ backgroundImage: `url(${imgSrc + movie.backdrop_path})` }}
         >
           <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
           <Nav />
-          <div className="flex flex-row items-center space-x-5  z-40 max-w-7xl w-full  mb-20">
-            <div className="space-y-10 ">
-              <h2 className="text-8xl text-white max-w-2xl font-bold">
+          <div className="flex flex-row items-center space-x-5  z-40 max-w-7xl w-full  mb-20 mx-auto  medium:flex-col-reverse  ">
+            <motion.div className="space-y-10 medium:space-y-5 medium:px-8 medium:mx-auto ">
+              <motion.h2
+                variants={titleAnime}
+                initial="hidden"
+                animate="show"
+                className="text-8xl text-white max-w-2xl font-bold medium:text-3xl medium:text-center medium:mt-2 small:text-2xl"
+              >
                 {movie.original_title}
-              </h2>
+              </motion.h2>
 
-              <p className="max-w-2xl text-lg text-white font-bold ">
+              <motion.p
+                variants={titleAnime}
+                initial="hidden"
+                animate="show"
+                className="max-w-2xl text-lg text-white font-bold medium:text-lg medium:text-center  small:text-sm"
+              >
                 {movie.overview}
-                <h4 className="text-white font-bold mt-2">
+                <motion.h4
+                  variants={titleAnime}
+                  className="text-white font-bold mt-2 medium:text-center"
+                >
                   Release Date :{" "}
-                  <span className="text-red-700">{movie.release_date}</span>
-                </h4>
-              </p>
+                  <motion.span variants={fade} className="text-red-700">
+                    {movie.release_date}
+                  </motion.span>
+                </motion.h4>
+              </motion.p>
 
-              <div className="space-x-4 rounded-md ">
-                <button
-                  className="rounded-2xl text-2xl bg-red-600 text-white  shadow-[0px_0px_7px_6px_#670b0b]  px-8 py-2 -"
+              <div className="space-x-4 rounded-md medium:text-center ">
+                <motion.button
+                  variants={fade}
+                  initial="hidden"
+                  animate="show"
+                  className="rounded-2xl text-2xl bg-red-600 text-white  shadow-[0px_0px_7px_6px_#670b0b] px-8 py-2 small:text-lg"
                   onClick={() => handleMovieClick()}
                 >
                   Watch Now
-                </button>
-                <button className="rounded-2xl text-2xl border text-white px-8 py-2 shadow-xl">
+                </motion.button>
+                <motion.button
+                  variants={fade}
+                  initial="hidden"
+                  animate="show"
+                  className="rounded-2xl text-2xl border text-white px-8 py-2 shadow-xl small:text-lg"
+                >
                   Watch Trailer
-                </button>
+                </motion.button>
               </div>
-            </div>
+            </motion.div>
             <div>
               <img
-                className="w-96 shadow-[0px_0px_7px_6px_#101010]  rounded-2xl"
+                className="w-96 shadow-[0px_0px_7px_6px_#101010]  rounded-2xl medium:w-56 "
                 src={imgSrc + movie.poster_path}
                 alt=""
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </>
   );
