@@ -1,5 +1,5 @@
 import HomeMovie from "../components/HomeMovie";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   popularMovies,
@@ -16,7 +16,8 @@ import { motion } from "framer-motion";
 import MovieGrid from "../components/MovieGrid";
 import { useNavigate } from "react-router-dom";
 import ScrollTop from "../components/ScrollTop";
-import { breakPoint, pageAnimation } from "../animation";
+import { breakPoint, fade, pageAnimation } from "../animation";
+import Trailer from "../components/Trailer";
 
 const Home = () => {
   const movie = useSelector((state) => state.movie.movie);
@@ -25,6 +26,13 @@ const Home = () => {
   const series = useSelector((state) => state.movie.pop.series);
   const topSeries = useSelector((state) => state.movie.topRated.topRatedSeries);
   const topMovies = useSelector((state) => state.movie.topRated.topRatedMovies);
+  const [click, setClicked] = useState(false);
+  const [clickedMovie, setClickedMovie] = useState(null);
+
+  const trailerClicked = (movie) => {
+    setClickedMovie(movie);
+    setClicked(!click);
+  };
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -55,7 +63,12 @@ const Home = () => {
         >
           {movie.map((movie) => (
             <SwiperSlide key={movie.id} className="relative">
-              <HomeMovie movie={movie} key={movie.id} />
+              <HomeMovie
+                movie={movie}
+                key={movie.id}
+                setClicked={() => trailerClicked(movie)}
+                click={click}
+              />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -220,6 +233,16 @@ const Home = () => {
           </Swiper>
         </div>
       </div>
+      {click && (
+        <div
+          className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70 z-50"
+          onClick={() => setClicked(false)}
+        >
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <Trailer movie={clickedMovie} />
+          </div>
+        </div>
+      )}
       <ScrollTop />
     </motion.div>
   );

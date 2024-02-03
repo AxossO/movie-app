@@ -44,6 +44,7 @@ function App() {
           path: "tv/:id",
           element: <MoviePage />,
         },
+
         {
           path: "*",
           element: <Error />,

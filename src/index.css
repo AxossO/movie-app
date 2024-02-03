@@ -61,7 +61,7 @@ html::-webkit-scrollbar-track {
   @apply before:h-1 before:w-20 before:absolute before:bg-[#E10907] before:-bottom-2 relative uppercase text-white font-bold;
 }
 .main-section-container {
-  @apply flex w-full  max-w-7xl mx-auto  flex-col relative;
+  @apply flex w-full  max-w-7xl mx-auto  flex-col relative ;
 }
 h1 {
   @apply before:h-1 before:w-20 before:absolute before:bg-[#E10907] before:-bottom-2 relative uppercase text-white font-bold;

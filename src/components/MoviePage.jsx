@@ -8,6 +8,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import ScrollTop from "./ScrollTop";
 import MovieGrid from "./MovieGrid";
+import { backDropbreakPoint } from "../animation";
 const MoviePage = () => {
   const movie = useSelector((state) => state.movie.movieDetails.listOfId);
   const movieCast = useSelector((state) => state.movie.movieDetails.casts);
@@ -29,41 +30,43 @@ const MoviePage = () => {
   return (
     <>
       {movie && (
-        <div className="w-full">
+        <div className="w-full ">
           <ScrollTop />
 
           <div
-            className={` w-full h-screen bg-cover bg-no-repeat flex flex-col items-center justify-center relative`}
+            className={` w-full h-screen bg-cover bg-no-repeat flex flex-col items-center justify-center relative px-4`}
             style={{ backgroundImage: `url(${imgSrc + movie.backdrop_path})` }}
           >
             <div className="absolute w-full h-full   inset-0 bg-gradient-to-t from-[#0D0C0D]  to-transparent "></div>
             <div className="absolute bg-gradient-to-b inset-0 from-[#0E0E0E] to-transparent via-black top-1/2  w-full h-full opacity-90"></div>
-            <div className="z-30 flex flex-row gap-5 mt-20">
-              <div className="">
+            <div className="z-30 flex flex-row gap-5 mt-20 small:flex-col small:text-center semiSmall:mt-26 ">
+              <div className="mx-auto flex items-center">
                 <img
-                  className=" max-w-sm h-full rounded-2xl  "
+                  className=" max-w-sm h-full rounded-2xl medium:max-w-xs medium:max-h-[60vh] small:w-56 "
                   src={imgSrc + movie.poster_path}
                   alt=""
                 />
               </div>
-              <div className="space-y-5">
-                <div className="text-7xl text-white max-w-2xl font-bold">
+              <div className="space-y-5 small:space-y-2">
+                <div className="text-7xl text-white max-w-2xl font-bold medium:text-5xl semiMedium:text-5xl small:text-2xl">
                   {movie.original_title}
                 </div>
                 <div className="">
                   {movie.status === "Released" && (
-                    <span className=" text-lg  text-white px-2 font-bold ">
-                      <span className="text-2xl text-[#E10907]">Status: </span>
+                    <span className=" text-lg  text-white px-2 font-bold small:text-base">
+                      <span className="text-2xl small:text-base text-[#E10907]">
+                        Status:{" "}
+                      </span>
                       Released
                     </span>
                   )}
                 </div>
 
                 {movie.genres && (
-                  <div className="flex gap-5">
+                  <div className="flex gap-5 small:justify-center small:items-center">
                     {movie.genres.map((genre) => (
                       <div
-                        className="text-white bg-[#E10907]  rounded-lg  px-4 py-1"
+                        className="text-white bg-[#E10907] small:text-base rounded-lg  px-4 py-1 small:text-center text-left"
                         key={genre.id}
                       >
                         {genre.name}
@@ -71,23 +74,23 @@ const MoviePage = () => {
                     ))}
                   </div>
                 )}
-                <p className="max-w-2xl text-lg text-[#eee] font-bold">
+                <p className="max-w-2xl text-lg text-[#eee] font-bold medium:text-base  small:text-sm ">
                   {movie.overview}
                 </p>
-                <div className="relative text-white">
-                  <div className="red-line relative">Cast</div>
-                  <div className="relative top-4 ">
+                <div className="relative text-white px-5 w-full semiSmall:px-2 ">
+                  <div className="red-line relative small:text-left">Cast</div>
+                  <div className="relative top-4 w-full">
                     {movieCast && (
-                      <div className="flex gap-3 relative ">
+                      <div className="flex gap-3 semiSmall:gap-1 relative medium:flex-wrap small:justify-center semiSmall:flex-nowrap  ">
                         {movieCast.map((cast) => (
-                          <div key={cast.id} className=" relative ">
+                          <div key={cast.id} className=" relative  ">
                             <img
-                              className={`w-32 flex relative`}
+                              className={`w-32 flex relative semiMedium:w-24  `}
                               src={`${imgSrc + cast.profile_path}`}
                             />
                             <div className="absolute bottom-0  w-full">
-                              <div className=" bg-black bg-opacity-70 h-10 relative">
-                                <div className=" text-white text-sm p-2 text-left  max-w-xs bottom-0 absolute font-normal">
+                              <div className=" bg-black bg-opacity-70 h-10 semiMedium:h-12 relative">
+                                <div className=" text-white text-sm p-2 text-left max-w-xs bottom-0 absolute font-normal">
                                   {cast.name.split(" ").slice(0, 2).join(" ")}
                                 </div>
                               </div>
@@ -103,13 +106,15 @@ const MoviePage = () => {
           </div>
 
           <div className=" main-section-container divider">
-            <div className=" red-line w-full mb-8">Videos</div>
+            <div className=" red-line w-full mb-8 superSmall:mb-2 superSmall:mt-4">
+              Videos
+            </div>
 
             {videos && (
               <Swiper
                 modules={[Navigation, Pagination]}
                 navigation={true}
-                className="max-w-7xl h-[80vh] px-8 w-full"
+                className="max-w-7xl h-[80vh] px-8 w-full medium:px-2 medium:w-full medium:h-[70vh] semiMedium:h-[60vh] small:h-[50vh] superSmall:h-[40vh]"
                 spaceBetween={10}
                 loop={true}
                 grabCursor={true}
@@ -124,32 +129,36 @@ const MoviePage = () => {
                       className="flex justify-center items-center w-full  "
                       key={video.id}
                     >
-                      {video.site === "YouTube" && (
-                        <SwiperSlide>
-                          <YouTube
-                            className="w-full flex justify-center items-center  video h-full  "
-                            videoId={video.key}
-                            key={video.id}
-                          ></YouTube>
-                        </SwiperSlide>
-                      )}
+                      {
+                        (video.site === "YouTube",
+                        video.type === "Trailer" && (
+                          <SwiperSlide>
+                            <YouTube
+                              className="w-full flex justify-center items-center  video h-full  "
+                              videoId={video.key}
+                              key={video.id}
+                            ></YouTube>
+                          </SwiperSlide>
+                        ))
+                      }
                     </div>
                   ))}
                 </div>
               </Swiper>
             )}
           </div>
-          <div className=" main-section-container divider">
+          <div className=" main-section-container divider average:px-4 medium:px-4">
             <div className=" red-line w-full mb-8 ">Backdrops</div>
             {movieImage.backdrops && (
               <Swiper
                 modules={[Navigation, Pagination]}
                 navigation={true}
-                className="max-w-7xl h-[80vh] px-8 w-full"
+                className="max-w-7xl h-[80vh] px-8 w-full  semiMedium:h-full "
                 spaceBetween={10}
                 initialSlide={1}
                 grabCursor={true}
                 loop={true}
+                breakpoints={backDropbreakPoint}
                 pagination={{
                   clickable: true,
                 }}
@@ -169,8 +178,8 @@ const MoviePage = () => {
               </Swiper>
             )}
           </div>
-          <div className=" main-section-container  movie-edit ">
-            <div className=" red-line w-full mb-8 ">Posters</div>
+          <div className=" main-section-container  movie-edit average:px-4 medium:px-4 ">
+            <div className=" red-line w-full  mb-8 ">Posters</div>
             {movieImage.posters && (
               <Swiper
                 slidesPerView={"auto"}
@@ -183,12 +192,12 @@ const MoviePage = () => {
                 }}
                 modules={[Pagination]}
               >
-                <div className="flex justify-center items-center w-full h-full  ">
+                <div className="flex justify-center items-center  h-full ">
                   {movieImage.posters.map((poster) => (
                     <div key={poster.id}>
                       <SwiperSlide>
                         <img
-                          className="h-full w-full"
+                          className="h-full w-full "
                           src={imgSrc + poster.file_path}
                         />
                       </SwiperSlide>

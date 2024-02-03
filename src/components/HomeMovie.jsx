@@ -3,16 +3,27 @@ import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fade, titleAnime } from "../animation";
-const HomeMovie = ({ movie }) => {
+import { useEffect, useState } from "react";
+import Trailer from "./Trailer";
+const HomeMovie = ({ movie, setClicked }) => {
   const status = useSelector((state) => state.movie.status);
   const imgSrc = "https://image.tmdb.org/t/p/original/";
+
   // if (status === "fulfilled") console.log("fullfiled");
   // if (status === "loading") console.log("loading");
   const navigate = useNavigate();
+  const [letters, setLetters] = useState(false);
 
+  useEffect(() => {
+    if (movie.original_title.length >= 40) {
+      setLetters(true);
+    }
+    // console.log(movie.id);
+  }, [movie.original_title]);
   const handleMovieClick = () => {
     navigate(`/movie/${movie.id}`);
   };
+
   return (
     <>
       {status === "fulfilled" && (
@@ -28,7 +39,9 @@ const HomeMovie = ({ movie }) => {
                 variants={titleAnime}
                 initial="hidden"
                 animate="show"
-                className="text-8xl text-white max-w-2xl font-bold medium:text-3xl medium:text-center medium:mt-2 small:text-2xl"
+                className={`${
+                  letters ? "text-7xl" : "text-8xl"
+                } text-white max-w-2xl font-bold medium:text-3xl medium:text-center medium:mt-2 small:text-2xl"`}
               >
                 {movie.original_title}
               </motion.h2>
@@ -71,6 +84,7 @@ const HomeMovie = ({ movie }) => {
                   initial="hidden"
                   animate="show"
                   className="rounded-2xl text-2xl border text-white px-8 py-2 shadow-xl small:text-lg"
+                  onClick={() => setClicked()}
                 >
                   Watch Trailer
                 </motion.button>
@@ -84,6 +98,7 @@ const HomeMovie = ({ movie }) => {
               />
             </div>
           </div>
+  
         </motion.div>
       )}
     </>

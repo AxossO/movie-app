@@ -91,3 +91,25 @@ export const breakPoint = {
     spaceBetween: 25,
   },
 };
+export const backDropbreakPoint = {
+  300: {
+    slidesPerView: 1,
+    spaceBetween: 5,
+  },
+  480: {
+    slidesPerView: 1,
+    spaceBetween: 10,
+  },
+  640: {
+    slidesPerView: 1,
+    spaceBetween: 10,
+  },
+  950: {
+    slidesPerView: 1,
+    spaceBetween: 10,
+  },
+  1121: {
+    slidesPerView: "auto",
+    spaceBetween: 25,
+  },
+};
