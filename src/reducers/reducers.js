@@ -6,6 +6,7 @@ import {
   popularMovies,
   popularSeries,
   randomMovie,
+  searchMovie,
   topRatedMovies,
   topRatedSeries,
   upcomingMovie,
@@ -17,6 +18,7 @@ const initialState = {
   randomMovies: [],
   movie: [],
   upcomingMovie: [],
+  searchName: [],
   pop: {
     popular: [],
     series: [],
@@ -102,6 +104,11 @@ const movieSlice = createSlice({
       })
       .addCase(topRatedSeries.fulfilled, (state, action) => {
         state.topRated.topRatedSeries = action.payload;
+        state.status = "fulfilled";
+        state.isLoading = false;
+      })
+      .addCase(searchMovie.fulfilled, (state, action) => {
+        state.searchName = action.payload;
         state.status = "fulfilled";
         state.isLoading = false;
       });

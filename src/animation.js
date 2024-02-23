@@ -1,24 +1,56 @@
 export const pageAnimation = {
   hidden: {
     opacity: 0,
-    x: 3000,
+    x: "-100vw",
   },
   show: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 1,
-      when: "beforeChildren",
-      staggerChildren: 0.25,
+      duration: 1.5,
+      ease: "easeInOut",
     },
   },
   exit: {
     opacity: 0,
-    x: 3000,
-
+    x: "100vw",
     transition: {
-      duration: 0.6,
-      ease: "easeOut",
+      duration: 1.5,
+      ease: "easeInOut",
+    },
+  },
+};
+export const testing = {
+  hidden: {
+    opacity: 1,
+    y: "-100vw",
+  },
+  show: {
+    opacity: 1,
+    y: "0",
+    transition: {
+      duration: 1.5,
+      ease: "easeInOut",
+    },
+  },
+};
+export const slideInFromTop = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 1.5,
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 1.5,
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
     },
   },
 };
@@ -67,7 +99,26 @@ export const fade = {
     },
   },
 };
-
+export const HoverFade = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+  exit: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.0,
+      ease: "easeOut",
+    },
+  },
+};
 // Swiper
 export const breakPoint = {
   300: {

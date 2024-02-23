@@ -104,6 +104,22 @@ const recomenditon = () => ({
     Authorization: accessToken,
   },
 });
+const search = (searchNameMovie) => ({
+  method: "GET",
+  url: `${url}/search/movie?query=${searchNameMovie}`,
+  headers: {
+    accept: "application/json",
+    Authorization: accessToken,
+  },
+});
+
+export const searchMovie = createAsyncThunk(
+  "searching",
+  async (searchNameMovie) => {
+    const response = await axios.request(search(searchNameMovie));
+    return response.data.results.slice(0, 10);
+  }
+);
 export const randomMovie = createAsyncThunk("poitato/path", async () => {
   const response = await axios.request(recomenditon());
   return response.data.results;

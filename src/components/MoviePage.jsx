@@ -6,9 +6,10 @@ import YouTube from "react-youtube";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/swiper-bundle.css";
+import { motion } from "framer-motion";
 import ScrollTop from "./ScrollTop";
 import MovieGrid from "./MovieGrid";
-import { backDropbreakPoint } from "../animation";
+import { backDropbreakPoint, slideInFromTop } from "../animation";
 const MoviePage = () => {
   const movie = useSelector((state) => state.movie.movieDetails.listOfId);
   const movieCast = useSelector((state) => state.movie.movieDetails.casts);
@@ -30,7 +31,12 @@ const MoviePage = () => {
   return (
     <>
       {movie && (
-        <div className="w-full ">
+        <motion.div
+          variants={slideInFromTop}
+          className="w-full "
+          initial="hidden"
+          animate="show"
+        >
           <ScrollTop />
 
           <div
@@ -231,7 +237,7 @@ const MoviePage = () => {
               </Swiper>
             )}
           </div>
-        </div>
+        </motion.div>
       )}
     </>
   );

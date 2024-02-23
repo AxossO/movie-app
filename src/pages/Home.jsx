@@ -78,7 +78,7 @@ const Home = () => {
           <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
             <h1 className="">Upcoming Movie</h1>
             <h2
-              className="text-right cursor-pointer"
+              className="text-right cursor-pointer font-mono "
               onClick={() => navigate(`/home/${"upcoming-movies"}`)}
             >
               View More
@@ -110,7 +110,7 @@ const Home = () => {
           <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
             <h1 className="">Popular Movie</h1>
             <h2
-              className="text-right cursor-pointer"
+              className="text-right cursor-pointer font-mono"
               onClick={() => navigate(`/home/${"popular-movies"}`)}
             >
               View More
@@ -142,7 +142,7 @@ const Home = () => {
           <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
             <h1 className="">Popular Series</h1>
             <h2
-              className="text-right cursor-pointer"
+              className="text-right cursor-pointer font-mono"
               onClick={() => navigate(`/home/${"popular-series"}`)}
             >
               View More
@@ -174,7 +174,7 @@ const Home = () => {
           <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
             <h1 className="">Top Rated Movies</h1>
             <h2
-              className="text-right cursor-pointer"
+              className="text-right cursor-pointer font-mono"
               onClick={() => navigate(`/home/${"top-rated-movies"}`)}
             >
               View More
@@ -206,7 +206,7 @@ const Home = () => {
           <div className="text-xl my-8 text-white font-bold flex items-center justify-between">
             <h1 className="">Top Rated Series</h1>
             <h2
-              className="text-right cursor-pointer"
+              className="text-right cursor-pointer font-mono"
               onClick={() => navigate(`/home/${"top-rated-series"}`)}
             >
               View More

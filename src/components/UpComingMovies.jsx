@@ -10,6 +10,8 @@ import {
 } from "../../Api";
 import { Link, useLocation } from "react-router-dom";
 import ScrollTop from "./ScrollTop";
+import { motion } from "framer-motion";
+import { testing } from "../animation";
 
 const UpComingMovies = ({ category }) => {
   const upcomingMoviee = useSelector((state) => state.movie.upcomingMovie);
@@ -23,63 +25,92 @@ const UpComingMovies = ({ category }) => {
   const pageParam = parseInt(urlParams.get("page") || "1");
   const urlName = category.replaceAll("-", " ");
   const [currentIdx, setCurrentIdx] = useState(pageParam);
-  // console.log(category);
   useEffect(() => {
     const newPageParam = pageParam;
     setCurrentIdx(newPageParam);
   }, [urlParams]);
   useEffect(() => {
-    if (currentIdx > 0 && category === "upcoming-movies") {
-      dispatch(upcomingMovie(currentIdx));
-    } else if (currentIdx > 0 && category === "popular-movies") {
-      dispatch(popularMovies(currentIdx));
-    } else if (currentIdx > 0 && category === "popular-series") {
-      dispatch(popularSeries(currentIdx));
-    } else if (currentIdx > 0 && category === "top-rated-movies") {
-      dispatch(topRatedMovies(currentIdx));
-    } else if (currentIdx > 0 && category === "top-rated-series") {
-      dispatch(topRatedSeries(currentIdx));
+    if (currentIdx > 0) {
+      switch (category) {
+        case "upcoming-movies":
+          dispatch(upcomingMovie(currentIdx));
+          break;
+        case "popular-movies":
+          dispatch(popularMovies(currentIdx));
+          break;
+        case "popular-series":
+          dispatch(popularSeries(currentIdx));
+          break;
+        case "top-rated-movies":
+          dispatch(topRatedMovies(currentIdx));
+          break;
+        case "top-rated-series":
+          dispatch(topRatedSeries(currentIdx));
+          break;
+        default:
+          break;
+      }
     }
-  }, [currentIdx, dispatch]);
+  }, [currentIdx, category, dispatch]);
+  // useEffect(() => {
+  //   if (currentIdx > 0 && category === "upcoming-movies") {
+  //     dispatch(upcomingMovie(currentIdx));
+  //   } else if (currentIdx > 0 && category === "popular-movies") {
+  //     dispatch(popularMovies(currentIdx));
+  //   } else if (currentIdx > 0 && category === "popular-series") {
+  //     dispatch(popularSeries(currentIdx));
+  //   } else if (currentIdx > 0 && category === "top-rated-movies") {
+  //     dispatch(topRatedMovies(currentIdx));
+  //   } else if (currentIdx > 0 && category === "top-rated-series") {
+  //     dispatch(topRatedSeries(currentIdx));
+  //   }
+  // }, [currentIdx, dispatch]);
+
   const idxhandler = (idx) => {
     setCurrentIdx((previdx) => previdx + idx);
   };
   return (
-    <div className="min-h-screen w-full max-w-7xl mt-48 ">
+    <motion.div
+      className="min-h-screen w-full max-w-7xl mt-48 "
+      variants={testing}
+      initial="hidden"
+      animate="show"
+      key={currentIdx}
+    >
       <ScrollTop />
-      <div className="text-center text-white mb-10 text-3xl font-bold font-mono capitalize">
+      <div className="text-center text-white mb-10 text-3xl font-bold font-anta capitalize">
         {urlName}
       </div>
       {category === "upcoming-movies" && (
-        <div className="w-full h-full grid gap-3 grid-cols-minmax-cols grid-rows-minmax-rows min-h-[180vh]">
+        <div className="list-grid">
           {upcomingMoviee.map((movie) => (
             <SingleUpcomingMovie movie={movie} key={movie.id} id={movie.id} />
           ))}
         </div>
       )}
       {category === "popular-movies" && (
-        <div className="w-full h-full grid gap-3 grid-cols-minmax-cols grid-rows-minmax-rows min-h-[180vh]">
+        <div className="list-grid">
           {popularMoviee.map((movie) => (
             <SingleUpcomingMovie movie={movie} key={movie.id} id={movie.id} />
           ))}
         </div>
       )}
       {category === "popular-series" && (
-        <div className="w-full h-full grid gap-3 grid-cols-minmax-cols grid-rows-minmax-rows min-h-[180vh]">
+        <div className="list-grid">
           {series.map((movie) => (
             <SingleUpcomingMovie movie={movie} key={movie.id} id={movie.id} />
           ))}
         </div>
       )}
       {category === "top-rated-series" && (
-        <div className="w-full h-full grid gap-3 grid-cols-minmax-cols grid-rows-minmax-rows min-h-[180vh]">
+        <div className="list-grid">
           {topSeries.map((movie) => (
             <SingleUpcomingMovie movie={movie} key={movie.id} id={movie.id} />
           ))}
         </div>
       )}
       {category === "top-rated-movies" && (
-        <div className="w-full h-full grid gap-3 grid-cols-minmax-cols grid-rows-minmax-rows min-h-[180vh]">
+        <div className="list-grid">
           {topMovies.map((movie) => (
             <SingleUpcomingMovie movie={movie} key={movie.id} id={movie.id} />
           ))}
@@ -122,7 +153,7 @@ const UpComingMovies = ({ category }) => {
           </div>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

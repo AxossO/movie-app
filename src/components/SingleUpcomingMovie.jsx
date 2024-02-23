@@ -21,7 +21,7 @@ const SingleUpcomingMovie = ({ movie, id }) => {
           onMouseLeave={() => setIsHovered(false)}
         >
           <div
-            className={` bg-cover bg-no-repeat w-full h-full rounded-2xl relative cursor-pointer`}
+            className={` bg-cover bg-no-repeat w-full h-full rounded-2xl relative cursor-pointer `}
             style={{ backgroundImage: `url(${imgSrc + movie.poster_path})` }}
           >
             <div> {ishovered ? <OnHoverMovie movie={movie} /> : ""}</div>

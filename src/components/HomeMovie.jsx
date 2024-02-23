@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
-import Nav from "./Nav";
+// import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fade, titleAnime } from "../animation";
 import { useEffect, useState } from "react";
-import Trailer from "./Trailer";
 const HomeMovie = ({ movie, setClicked }) => {
   const status = useSelector((state) => state.movie.status);
   const imgSrc = "https://image.tmdb.org/t/p/original/";
@@ -32,7 +31,7 @@ const HomeMovie = ({ movie, setClicked }) => {
           style={{ backgroundImage: `url(${imgSrc + movie.backdrop_path})` }}
         >
           <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
-          <Nav />
+          {/* <Nav /> */}
           <div className="flex flex-row items-center space-x-5  z-40 max-w-7xl w-full  mb-20 mx-auto  medium:flex-col-reverse average:mx-auto justify-center mt-8 superSmall:mt-20">
             <motion.div className="space-y-10 medium:space-y-5 medium:px-8 medium:mx-auto ">
               <motion.h2
@@ -98,7 +97,6 @@ const HomeMovie = ({ movie, setClicked }) => {
               />
             </div>
           </div>
-  
         </motion.div>
       )}
     </>

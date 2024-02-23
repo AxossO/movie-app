@@ -61,8 +61,15 @@ html::-webkit-scrollbar-track {
   @apply before:h-1 before:w-20 before:absolute before:bg-[#E10907] before:-bottom-2 relative uppercase text-white font-bold;
 }
 .main-section-container {
-  @apply flex w-full  max-w-7xl mx-auto  flex-col relative ;
+  @apply flex w-full  max-w-7xl mx-auto  flex-col relative;
 }
 h1 {
   @apply before:h-1 before:w-20 before:absolute before:bg-[#E10907] before:-bottom-2 relative uppercase text-white font-bold;
+}
+
+.search-grid .swiper-slide {
+  @apply w-1/6 flex flex-wrap;
+}
+.list-grid {
+  @apply medium:px-4 w-full h-full grid gap-3 grid-cols-minmax-cols  min-h-[180vh] medium:min-h-[250vh] semiMedium:min-h-[350vh] small:min-h-[450vh] avergaeSmall:min-h-[480vh] tinySmall:min-h-[380vh] tinySmall:grid-cols-small-cols tinyDoubleSmall:min-h-[290vh] tinyDoubleSmall:grid-cols-smally-cols;
 }
