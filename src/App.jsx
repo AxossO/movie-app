@@ -28,20 +28,20 @@ function App() {
           element: <Navigate replace to="home" />,
         },
         {
-          path: "home",
+          path: "/movie-app/home",
           element: <Home />,
         },
         ...categories.map((category) => ({
-          path: `home/${category}`,
+          path: `/movie-app/home/${category}`,
           element: <UpComingMovies category={category} />,
         })),
 
         {
-          path: "movie/:id",
+          path: "/movie-app/movie/:id",
           element: <MoviePage />,
         },
         {
-          path: "tv/:id",
+          path: "/movie-app/tv/:id",
           element: <MoviePage />,
         },
 
