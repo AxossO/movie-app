@@ -18,7 +18,7 @@ const Trailer = ({ movie }) => {
     <div className="">
       {videos && (
         <Swiper
-          className="max-w-5xl h-[70vh]  w-full medium:px-2 medium:max-w-4xl  medium:h-[70vh] semiMedium:h-[60vh] semiMedium:max-w-3xl small:h-[50vh] superSmall:h-[40vh] small:max-w-md superSmall:max-w-sm "
+          className="max-w-5xl h-[70vh] w-full medium:px-2 medium:max-w-4xl  medium:h-[70vh] semiMedium:h-[60vh] semiMedium:max-w-3xl small:h-[50vh] superSmall:h-[40vh] small:max-w-md superSmall:max-w-sm "
           spaceBetween={10}
           initialSlide={1}
         >

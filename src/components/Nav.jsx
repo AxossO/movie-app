@@ -19,6 +19,8 @@ const Nav = () => {
     if (inputText !== "") {
       dispatch(searchMovie(inputText));
     }
+  }, [inputText]);
+  useEffect(() => {
     if (searchClicker) {
       document.body.style.overflow = "hidden";
       document.body.style.scrollbarWidth = "0.2rem";
@@ -26,7 +28,7 @@ const Nav = () => {
     } else {
       document.body.style.overflow = "unset";
     }
-  }, [inputText]);
+  }, [searchClicker]);
   return (
     <>
       {searchClicker && (
@@ -37,7 +39,7 @@ const Nav = () => {
                 <div
                   className="text-white  ml-4 cursor-pointer font-anta"
                   onClick={() => {
-                    setSearchClicker(false);
+                    setSearchClicker(!searchClicker);
                     setInputText("");
                   }}
                 >
@@ -63,7 +65,8 @@ const Nav = () => {
                         >
                           {searchName.map((movie) => (
                             <div
-                              className="h-full  "
+                              key={movie.id}
+                              className="h-full"
                               onClick={() => setInputText("")}
                             >
                               <SingleUpcomingMovie

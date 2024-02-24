@@ -49,7 +49,7 @@ const Home = () => {
       initial="hidden"
       animate="show"
       exit="exit"
-      className="flex flex-col overflow-hidden relative w-full"
+      className="flex flex-col overflow-hidden relative w-full "
     >
       <div className=" flex-row h-full w-full flex mx-auto  overflow-hidden relative   ">
         <Swiper
@@ -235,10 +235,10 @@ const Home = () => {
       </div>
       {click && (
         <div
-          className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70 z-50"
+          className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70 z-50 "
           onClick={() => setClicked(false)}
         >
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="fixed top-[15%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
             <Trailer movie={clickedMovie} />
           </div>
         </div>

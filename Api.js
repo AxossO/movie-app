@@ -120,7 +120,7 @@ export const searchMovie = createAsyncThunk(
     return response.data.results.slice(0, 10);
   }
 );
-export const randomMovie = createAsyncThunk("poitato/path", async () => {
+export const randomMovie = createAsyncThunk("random/path", async () => {
   const response = await axios.request(recomenditon());
   return response.data.results;
 });
