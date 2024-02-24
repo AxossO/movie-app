@@ -1,6 +1,6 @@
 {
   "name": "movie-app",
-  "homepage": "https://axosso.github.io/movie-app/",
+  "homepage": "https://axosso.github.io/movie-app/home",
   "private": true,
   "version": "0.0.0",
   "type": "module",
