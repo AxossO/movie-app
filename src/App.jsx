@@ -8,7 +8,6 @@ import {
   Navigate,
   RouterProvider,
   createBrowserRouter,
-  createHashRouter,
 } from "react-router-dom";
 
 const categories = [
@@ -20,7 +19,7 @@ const categories = [
 ];
 
 function App() {
-  const router = createHashRouter([
+  const router = createBrowserRouter([
     {
       element: <AppLayout />,
       children: [
