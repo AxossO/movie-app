@@ -11,8 +11,8 @@ const MovieGrid = ({ movie }) => {
   const isInView = useInView(ref, { margin: "1px 0px 0px 0px" });
 
   const handleMovieClick = () => {
-    if (movie.original_title) navigate(`/movie/${movie.id}`);
-    if (movie.original_name) navigate(`/tv/${movie.id}`);
+    if (movie.original_title) navigate(`/movie-app/movie/${movie.id}`);
+    if (movie.original_name) navigate(`/movie-app/tv/${movie.id}`);
   };
   return (
     <motion.div

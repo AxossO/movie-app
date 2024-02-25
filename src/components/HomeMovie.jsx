@@ -20,7 +20,7 @@ const HomeMovie = ({ movie, setClicked }) => {
     // console.log(movie.id);
   }, [movie.original_title]);
   const handleMovieClick = () => {
-    navigate(`/movie/${movie.id}`);
+    navigate(`/movie-app/movie/${movie.id}`);
   };
 
   return (

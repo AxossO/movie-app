@@ -7,8 +7,8 @@ const SingleUpcomingMovie = ({ movie, id }) => {
   const [ishovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const handleMovieClick = () => {
-    if (movie.original_title) navigate(`/movie/${movie.id}`);
-    if (movie.original_name) navigate(`/tv/${movie.id}`);
+    if (movie.original_title) navigate(`/movie-app/movie/${movie.id}`);
+    if (movie.original_name) navigate(`/movie-app/tv/${movie.id}`);
   };
 
   return (

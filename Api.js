@@ -6,7 +6,7 @@ const accessToken = import.meta.env.VITE_ACCESS_TOKEN;
 const url = "https://api.themoviedb.org/3";
 
 const min = 1;
-const max = 1000;
+const max = 500;
 const randomNumber = Math.floor(Math.random() * (max - min) + min);
 
 const options = {
