@@ -91,18 +91,18 @@ const Nav = () => {
           searchClicker ? "hidden" : ""
         }`}
       >
-        <NavLink to={"/home"}>
+        <NavLink to={"/movie-app/home"}>
           <img src={logo} alt="" className="w-20 z-50 "></img>
         </NavLink>
         <div className="font-anta">
           <ul className="flex justify-center items-center space-x-6 z-50 text-white font-bold text-2xl superSmall:text-lg ">
-            <NavLink to={"/home"}>
+            <NavLink to={"/movie-app/home"}>
               <li>Home</li>
             </NavLink>
-            <NavLink to={"home/popular-movies"}>
+            <NavLink to={"/movie-app/home/popular-movies"}>
               <li>Movies</li>
             </NavLink>
-            <NavLink to={"home/popular-series"}>
+            <NavLink to={"/movie-app/home/popular-series"}>
               <li>Tv Series</li>
             </NavLink>
             <li
