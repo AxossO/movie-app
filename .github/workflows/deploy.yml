@@ -24,7 +24,6 @@ jobs:
 
       - name: Build project
         run: npm run build
-
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
