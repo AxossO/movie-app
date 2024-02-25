@@ -25,7 +25,7 @@ function App() {
       children: [
         {
           path: "/",
-          element: <Navigate replace to="home" />,
+          element: <Navigate replace to="/movie-app/home" />,
         },
         {
           path: "/movie-app/home",
