@@ -9,13 +9,12 @@ const url = "https://api.themoviedb.org/3";
 const min = 1;
 const max = 500;
 const randomNumber = Math.floor(Math.random() * (max - min) + min);
-console.log(accessToken);
 const options = {
   method: "GET",
   url: `${url}/movie/now_playing`,
   params: { language: "en-US", page: "1" },
   headers: {
-    accept: "application/json",
+    accept: "application/vnd.github+json",
     Authorization: accessToken,
   },
 };
@@ -24,7 +23,7 @@ const upcomingOption = (index) => ({
   url: `${url}/movie/upcoming?page${index}`,
   params: { page: index },
   headers: {
-    accept: "application/json",
+    accept: "application/vnd.github+json",
     Authorization: accessToken,
   },
 });
@@ -33,7 +32,7 @@ const seriesOption = (index) => ({
   url: `${url}/tv/popular?page${index}`,
   params: { page: index },
   headers: {
-    accept: "application/json",
+    accept: "application/vnd.github+json",
     Authorization: accessToken,
   },
 });
@@ -42,7 +41,7 @@ const topRatedSeriesOption = (index) => ({
   url: `${url}/tv/top_rated?page${index}`,
   params: { page: index },
   headers: {
-    accept: "application/json",
+    accept: "application/vnd.github+json",
     Authorization: accessToken,
   },
 });
@@ -51,7 +50,7 @@ const topRatedMovieOption = (index) => ({
   url: `${url}/movie/top_rated?page${index}`,
   params: { page: index },
   headers: {
-    accept: "application/json",
+    accept: "application/vnd.github+json",
     Authorization: accessToken,
   },
 });
@@ -60,7 +59,7 @@ const popular = (index) => ({
   url: `${url}/movie/popular?page${index}`,
   params: { page: index },
   headers: {
-    accept: "application/json",
+    accept: "application/vnd.github+json",
     Authorization: accessToken,
   },
 });
@@ -68,7 +67,7 @@ const gettingId = (id, endpoint) => ({
   method: "GET",
   url: `${url}/${endpoint}/${id}`,
   headers: {
-    accept: "application/json",
+    accept: "application/vnd.github+json",
     Authorization: accessToken,
   },
 });
@@ -76,7 +75,7 @@ const gettingCast = (id, endpoint) => ({
   method: "GET",
   url: `${url}/${endpoint}/${id}/credits`,
   headers: {
-    accept: "application/json",
+    accept: "application/vnd.github+json",
     Authorization: accessToken,
   },
 });
@@ -85,7 +84,7 @@ const gettingVideos = (id, endpoint) => ({
   url: `${url}/${endpoint}/${id}/videos`,
   // url: `${url}/${endpoint}/${id}/videos`,
   headers: {
-    accept: "application/json",
+    accept: "application/vnd.github+json",
     Authorization: accessToken,
   },
 });
@@ -93,7 +92,7 @@ const gettingImages = (id, endpoint) => ({
   method: "GET",
   url: `${url}/${endpoint}/${id}/images`,
   headers: {
-    accept: "application/json",
+    accept: "application/vnd.github+json",
     Authorization: accessToken,
   },
 });
@@ -101,7 +100,7 @@ const recomenditon = () => ({
   method: "GET",
   url: `${url}/discover/movie?page=${randomNumber}`,
   headers: {
-    accept: "application/json",
+    accept: "application/vnd.github+json",
     Authorization: accessToken,
   },
 });
@@ -109,7 +108,7 @@ const search = (searchNameMovie) => ({
   method: "GET",
   url: `${url}/search/movie?query=${searchNameMovie}`,
   headers: {
-    accept: "application/json",
+    accept: "application/vnd.github+json",
     Authorization: accessToken,
   },
 });
