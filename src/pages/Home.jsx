@@ -79,7 +79,7 @@ const Home = () => {
             <h1 className="">Upcoming Movie</h1>
             <h2
               className="text-right cursor-pointer font-mono "
-              onClick={() => navigate(`/home/${"upcoming-movies"}`)}
+              onClick={() => navigate(`/movie-app/home/${"upcoming-movies"}`)}
             >
               View More
             </h2>
@@ -111,7 +111,7 @@ const Home = () => {
             <h1 className="">Popular Movie</h1>
             <h2
               className="text-right cursor-pointer font-mono"
-              onClick={() => navigate(`/home/${"popular-movies"}`)}
+              onClick={() => navigate(`/movie-app/home/${"popular-movies"}`)}
             >
               View More
             </h2>
@@ -143,7 +143,7 @@ const Home = () => {
             <h1 className="">Popular Series</h1>
             <h2
               className="text-right cursor-pointer font-mono"
-              onClick={() => navigate(`/home/${"popular-series"}`)}
+              onClick={() => navigate(`/movie-app/home/${"popular-series"}`)}
             >
               View More
             </h2>
@@ -175,7 +175,7 @@ const Home = () => {
             <h1 className="">Top Rated Movies</h1>
             <h2
               className="text-right cursor-pointer font-mono"
-              onClick={() => navigate(`/home/${"top-rated-movies"}`)}
+              onClick={() => navigate(`/movie-app/home/${"top-rated-movies"}`)}
             >
               View More
             </h2>
@@ -207,7 +207,7 @@ const Home = () => {
             <h1 className="">Top Rated Series</h1>
             <h2
               className="text-right cursor-pointer font-mono"
-              onClick={() => navigate(`/home/${"top-rated-series"}`)}
+              onClick={() => navigate(`/movie-app/home/${"top-rated-series"}`)}
             >
               View More
             </h2>
