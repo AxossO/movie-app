@@ -43,7 +43,10 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
 
+      - name: Install Dependencies (prod)
+        run: npm install --frozen-lockfile --only=prod
+
       - name: Run Tests (JEST)
-        run: jest --ci --silent --testPathIgnorePatterns=experimental
+        run: npm test --ci --silent --testPathIgnorePatterns=experimental
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
