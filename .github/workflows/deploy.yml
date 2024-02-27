@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 20
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
@@ -28,7 +28,6 @@ jobs:
       - name: Run Tests (JEST)
         run: yarn test --ci --silent --testPathIgnorePatterns=experimental
         env:
-          CI: true
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Upload production-ready build files
