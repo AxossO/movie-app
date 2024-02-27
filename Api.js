@@ -9,7 +9,6 @@ const url = "https://api.themoviedb.org/3";
 const min = 1;
 const max = 500;
 const randomNumber = Math.floor(Math.random() * (max - min) + min);
-console.log(accessToken);
 const options = {
   method: "GET",
   url: `${url}/movie/now_playing`,

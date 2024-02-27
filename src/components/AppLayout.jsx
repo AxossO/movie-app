@@ -20,7 +20,6 @@ const AppLayout = () => {
               ariaLabel="tail-spin-loading"
               radius="0"
             />
-            )
           </div>
         )}
         <Nav />
