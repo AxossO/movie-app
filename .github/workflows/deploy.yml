@@ -43,7 +43,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
 
-      - name: Print Secret
-        run: echo ${{ secrets.ACCESS_TOKEN }}
+      - name: Run Tests (JEST)
+        run: yarn test --ci --silent --testPathIgnorePatterns=experimental
         env:
+          CI: true
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
