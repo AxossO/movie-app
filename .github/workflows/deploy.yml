@@ -44,6 +44,6 @@ jobs:
           publish_dir: ./dist
 
       - name: Run Tests (JEST)
-        run: yarn test --ci --silent --testPathIgnorePatterns=experimental
+        run: jest --ci --silent --testPathIgnorePatterns=experimental
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
