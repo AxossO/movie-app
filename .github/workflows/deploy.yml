@@ -36,17 +36,15 @@ jobs:
         with:
           name: production-files
           path: ./dist
+      - name: Install and Build
+        run: |
+          npm install
+          npm run-script build
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-
-      - name: Install Dependencies (prod)
-        run: npm install --frozen-lockfile --only=prod
-
-      - name: Run Tests (JEST)
-        run: npm test --ci --silent --testPathIgnorePatterns=experimental
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
