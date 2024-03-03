@@ -24,7 +24,8 @@ const upcomingOption = (index) => ({
   params: { page: index },
   headers: {
     accept: "application/json",
-    Authorization: accessToken,
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxM2M4MmY1M2Q5OTkzM2EwYTRjYTNlN2JlMzgwMjkyMSIsInN1YiI6IjY1ZGIyOWU5Y2FiZmU0MDE4NmQxNDU0ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OvjQWMfiq3U8QPn43Z8ikW8cMfMOI4S6hmvhJPXUqGk",
   },
 });
 const seriesOption = (index) => ({
