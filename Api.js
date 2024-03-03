@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { defineConfig, loadEnv } from "vite";
 
 // const apiKey = import.meta.env.API_KEY;
 
