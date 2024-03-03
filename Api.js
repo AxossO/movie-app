@@ -5,7 +5,7 @@ import axios from "axios";
 const accessToken = import.meta.env.VITE_ACCESS_TOKEN;
 // const accessToken = process.env.ACCESS_TOKEN;
 const url = "https://api.themoviedb.org/3";
-
+console.log(accessToken)
 const min = 1;
 const max = 500;
 const randomNumber = Math.floor(Math.random() * (max - min) + min);
