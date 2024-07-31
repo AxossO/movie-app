@@ -51,7 +51,7 @@ const Home = () => {
       exit="exit"
       className="flex flex-col overflow-hidden relative w-full "
     >
-      <div className=" flex-row h-full w-full flex mx-auto  overflow-hidden relative   ">
+      <div className=" flex-row h-full w-full mx-auto  overflow-hidden relative   ">
         <Swiper
           loop={true}
           navigation={true}
